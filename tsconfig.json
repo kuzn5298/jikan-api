@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "lib": ["ESNext", "DOM"],
+        "pretty": true,
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node",
+        "allowJs": true
+    },
+    "include": ["src/**/*"]
+}

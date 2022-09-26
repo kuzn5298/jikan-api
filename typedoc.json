@@ -1,0 +1,14 @@
+{
+    "$schema": "https://typedoc.org/schema.json",
+    "out": "docs",
+    "name": "Jikan API",
+    "entryPoints": ["src/apis", "src/enums", "src/interfaces", "src/Jikan.ts"],
+    "includeVersion": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "excludeConstructors": true,
+    "mergeModulesRenameDefaults": true,
+    "mergeModulesMergeMode": "module",
+    "internalModule": "Internal",
+    "excludeExternals": true
+}
