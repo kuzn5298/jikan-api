@@ -1,18 +1,19 @@
 import { describe, expect, test } from '@jest/globals';
+import { client } from '../../../src/libs';
 
-import Settings from '../../../src/libs/settings';
-import Client from '../../../src/libs/client';
-import { DEFAULT_BASE_URL, DEFAULT_VERSION } from '../../../src/constants';
-import { getMockAnime, INVALID_ANIME_ID } from '../../mock';
+import {
+    getMockAnime,
+    getMockAnimeList,
+    INVALID_ANIME_ID,
+    TIMEOUT_BETWEEN_TESTS,
+} from '../../mock';
 
-const BASE_URL = DEFAULT_BASE_URL;
-const VERSION = DEFAULT_VERSION;
+beforeEach((done) => {
+    setTimeout(done, TIMEOUT_BETWEEN_TESTS);
+});
 
 describe('client', () => {
     const anime = getMockAnime();
-
-    const settings = new Settings(BASE_URL, VERSION);
-    const client = new Client({}, settings);
 
     test('client (fetch)', async () => {
         const { data } = await client.get(`anime/${anime.id}`);
@@ -25,5 +26,20 @@ describe('client', () => {
         } catch (e) {
             expect(e).toBeDefined();
         }
+    });
+
+    test('client (rate-limit)', async () => {
+        const MAX_LIST_LENGTH = 5;
+        const animeList = getMockAnimeList().slice(0, MAX_LIST_LENGTH);
+        const promiseList = await Promise.all(
+            animeList.map(async ({ id }) => {
+                const anime = await client.get(['anime', id]);
+                return anime?.data;
+            })
+        );
+
+        const ACTUAL_IDS = promiseList.map((anime) => anime?.mal_id);
+        const EXPECT_IDS = animeList.map((anime) => anime?.id);
+        expect(ACTUAL_IDS).toEqual(EXPECT_IDS);
     });
 });

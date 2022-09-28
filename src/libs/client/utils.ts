@@ -9,7 +9,7 @@ export const urlBuilder = (paths: Paths = []) => {
 
 export const combineOptions = (
     options: Options,
-    defaults: Options
+    defaults: Options = {}
 ): AxiosRequestConfig => {
     const headers = {
         ...defaults.headers,

@@ -1,5 +1,6 @@
-import axios from 'axios';
 import { describe, test } from '@jest/globals';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
 
 import Client from '../../../src/libs/client';
 
@@ -15,35 +16,47 @@ const DEFAULT_ERROR = {
     message: 'Bad Request',
 };
 
-jest.mock('axios');
-
 describe('client', () => {
+    let mock = new MockAdapter(axios);
+
+    afterEach(() => {
+        mock.reset();
+    });
+
     const client = new Client();
 
     test('client (error with status 200)', async () => {
-        (axios as any).mockResolvedValue({ data: ERROR });
+        const SUCCESS_ERROR = 'success_error';
+        mock.onGet(SUCCESS_ERROR).reply(200, ERROR);
+        expect.assertions(1);
         try {
-            await client.get();
+            await client.get(SUCCESS_ERROR);
         } catch (err) {
             expect(err).toEqual(ERROR);
         }
     });
 
     test('client (throw null)', async () => {
-        (axios as any).mockRejectedValue(null);
+        const NULL_ERROR = 'null_error';
+        mock.onGet(NULL_ERROR).reply(404, null);
+        expect.assertions(1);
+
         try {
-            await client.get();
+            await client.get(NULL_ERROR);
         } catch (err) {
             expect(err).toEqual(DEFAULT_ERROR);
         }
     });
 
     test('client (throw error)', async () => {
-        (axios as any).mockRejectedValue(ERROR);
+        const NULL_ERROR = 'throw_error';
+        mock.onGet(NULL_ERROR).reply(404, ERROR);
+        expect.assertions(1);
+
         try {
-            await client.get();
+            await client.get(NULL_ERROR);
         } catch (err) {
-            expect(err).not.toEqual(ERROR);
+            expect(err).toEqual(ERROR);
         }
     });
 });

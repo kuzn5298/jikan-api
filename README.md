@@ -6,9 +6,11 @@
 [![Npm package version](https://badgen.net/npm/v/jikan-api)](https://www.npmjs.org/package/jikan-api)
 [![Install size](https://packagephobia.now.sh/badge?p=jikan-api)](https://packagephobia.now.sh/result?p=jikan-api)
 [![npm downloads](https://img.shields.io/npm/dm/jikan-api)](https://npm-stat.com/charts.html?package=jikan-api)
-![Build status](https://github.com/kuzn5298/jikan-api/actions/workflows/docs.yml/badge.svg)
+
+[![Build status](https://github.com/kuzn5298/jikan-api/actions/workflows/docs.yml/badge.svg)](https://kuzn5298.github.io/jikan-api/)
 [![GitHub issues](https://img.shields.io/github/issues/kuzn5298/jikan-api.svg)](https://github.com/kuzn5298/jikan-api/issues/)
-![Languages](https://img.shields.io/github/languages/top/kuzn5298/jikan-api)
+
+[![Languages](https://img.shields.io/github/languages/top/kuzn5298/jikan-api)](https://github.com/kuzn5298/jikan-api/search?l=typescript)
 [![CodeQL](https://github.com/kuzn5298/jikan-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kuzn5298/jikan-api/actions/workflows/codeql-analysis.yml)
 [![Coverage Status](https://img.shields.io/codecov/c/github/kuzn5298/jikan-api/main.svg)](https://codecov.io/gh/kuzn5298/jikan-api/branch/main)
 
@@ -18,7 +20,7 @@ Promise based [Jikan API (v4)](https://jikan.moe/) (unofficial MyAnimeList API) 
 
 ## 📋 Table of Contents
 
--   [Todo](#✏️-todo)
+-   [Todo](#📝-todo)
 -   [Features](#🗓-features)
 -   [Install](#🚀-install)
 -   [Usage](#🪄-usage)
@@ -26,10 +28,9 @@ Promise based [Jikan API (v4)](https://jikan.moe/) (unofficial MyAnimeList API) 
 -   [Contributing](#🛠-contributings)
 -   [License](#📜-license)
 
-## ✏️ Todo
+## 📝 Todo
 
 -   Add data caching
--   Add rate-limit
 -   Improve interfaces for Anime
 -   Add characters methods
 -   Add clubs methods
@@ -51,6 +52,7 @@ Promise based [Jikan API (v4)](https://jikan.moe/) (unofficial MyAnimeList API) 
 -   Uses [Jikan API](https://jikan.moe/) (v4)
 -   Supports TypeScript and JavaScript
 -   Supports Browser and Node.js (uses [axios](https://github.com/axios/axios/) for requests)
+-   Supports rate limit (uses [limiter](https://github.com/jhurliman/node-rate-limiter/) for requests)
 
 ## 🚀 Install
 

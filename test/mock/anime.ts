@@ -27,3 +27,4 @@ const MOCK_ANIME_LIST = [
 ];
 
 export const getMockAnime = () => getRandomElement(MOCK_ANIME_LIST);
+export const getMockAnimeList = () => MOCK_ANIME_LIST;
