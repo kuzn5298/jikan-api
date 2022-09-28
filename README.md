@@ -29,22 +29,20 @@ Promise based [Jikan API (v4)](https://jikan.moe/) (unofficial MyAnimeList API) 
 -   Add data caching
 -   Add rate-limit
 -   Improve interfaces for Anime
--   Add tests
--   Add actions
--   Add characters
--   Add clubs
--   Add genres
--   Add magazines
--   Add manga
--   Add people
--   Add producers
--   Add random
--   Add recommendations
--   Add reviews
--   Add schedules
--   Add users
--   Add seasons
--   Add top
+-   Add characters methods
+-   Add clubs methods
+-   Add genres methods
+-   Add magazines methods
+-   Add manga methods
+-   Add people methods
+-   Add producers methods
+-   Add random methods
+-   Add recommendations methods
+-   Add reviews methods
+-   Add schedules methods
+-   Add users methods
+-   Add seasons methods
+-   Add top methods
 
 ## 🗓 Features
 
@@ -173,4 +171,5 @@ Feel free to dive in! [Open an issue](https://github.com/kuzn5298/jikan-api/issu
 Standard Readme follows the [Contributor Covenant](https://www.contributor-covenant.org/version/1/4) Code of Conduct.
 
 ## 📜 License
+
 [![GitHub license](https://img.shields.io/github/license/kuzn5298/jikan-api)](https://github.com/kuzn5298/jikan-api/blob/main/LICENSE)

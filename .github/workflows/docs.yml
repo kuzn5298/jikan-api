@@ -1,60 +1,63 @@
 name: Docs
 
 on:
-  push:
-    branches: ["main"]
+    push:
+        branches: ['main']
 
-  workflow_dispatch:
+    workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+    contents: read
+    pages: write
+    id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: true
+    group: 'pages'
+    cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        
-      - name: Set up Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-          
-      - name: Install dependencies
-        run: npm install
+    deploy:
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                node-version: [16.x]
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
 
-      - name: Build the code
-        run: npm run docs
-          
-      - name: Setup Pages
-        uses: actions/configure-pages@v2
-        
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
-        
-        with:
-          path: './docs'
-          
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v1
+            - name: Set up Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+
+            - name: Cache dependencies
+              uses: actions/cache@v2
+              with:
+                  path: |
+                      **/node_modules
+                  key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Test the code
+              run: npm run test
+
+            - name: Build the code
+              run: npm run docs
+
+            - name: Setup Pages
+              uses: actions/configure-pages@v2
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v1
+
+              with:
+                  path: './docs'
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v1

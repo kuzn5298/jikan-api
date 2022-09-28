@@ -1,0 +1,7 @@
+module.exports = {
+    preset: 'ts-jest',
+    testEnvironment: 'node',
+    maxWorkers: 1,
+    testTimeout: 15000,
+    coveragePathIgnorePatterns: ['<rootDir>/test/'],
+};
