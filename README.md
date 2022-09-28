@@ -5,10 +5,12 @@
 
 [![Npm package version](https://badgen.net/npm/v/jikan-api)](https://www.npmjs.org/package/jikan-api)
 [![Install size](https://packagephobia.now.sh/badge?p=jikan-api)](https://packagephobia.now.sh/result?p=jikan-api)
+[![npm downloads](https://img.shields.io/npm/dm/jikan-api)](https://npm-stat.com/charts.html?package=jikan-api)
 ![Build status](https://github.com/kuzn5298/jikan-api/actions/workflows/docs.yml/badge.svg)
 [![GitHub issues](https://img.shields.io/github/issues/kuzn5298/jikan-api.svg)](https://github.com/kuzn5298/jikan-api/issues/)
 ![Languages](https://img.shields.io/github/languages/top/kuzn5298/jikan-api)
 [![CodeQL](https://github.com/kuzn5298/jikan-api/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/kuzn5298/jikan-api/actions/workflows/codeql-analysis.yml)
+[![Coverage Status](https://img.shields.io/codecov/c/github/kuzn5298/jikan-api/main.svg)](https://codecov.io/gh/kuzn5298/jikan-api/branch/main)
 
 </div>
 
