@@ -19,6 +19,10 @@ export interface FullPagination {
      */
     has_next_page: boolean;
     /**
+     * @type {number}
+     */
+    current_page: number;
+    /**
      * @type {PaginationItems}
      */
     items: PaginationItems;
@@ -36,5 +40,5 @@ export interface PaginationItems {
     /**
      * @type {number}
      */
-    perPage: number;
+    per_page: number;
 }

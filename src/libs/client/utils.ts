@@ -16,10 +16,34 @@ export const combineOptions = (
         ...options.headers,
     };
 
-    return {
+    const params = {
+        ...defaults.parameters,
+        ...options.parameters,
+    };
+
+    const config = {
         ...defaults,
         ...options,
-        params: defaults?.parameters ?? options.parameters,
-        headers,
     };
+
+    if (Object.keys(headers).length) {
+        config.headers = headers;
+    }
+    if (Object.keys(params).length) {
+        (config as AxiosRequestConfig).params = params;
+    }
+
+    delete config.parameters;
+
+    return config;
+};
+
+export const isError = (e: any) => {
+    return Boolean(
+        e &&
+            typeof e.status === 'number' &&
+            typeof e.type === 'string' &&
+            typeof e.message === 'string' &&
+            (typeof e.error === 'string' || e.error === null)
+    );
 };

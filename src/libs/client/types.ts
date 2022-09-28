@@ -18,6 +18,7 @@ export interface Options {
     parameters?: Parameters;
     headers?: Headers;
     method?: 'GET';
+    timeout?: number;
 }
 
 export type Paths = Array<string | number> | string | number;

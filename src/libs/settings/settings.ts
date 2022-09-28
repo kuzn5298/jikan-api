@@ -3,7 +3,7 @@ class Settings {
     #baseURL!: string;
     #version!: number | undefined;
 
-    constructor(baseURL = '', version?: number) {
+    constructor(baseURL: string, version?: number) {
         const suffix = Settings.#getSuffixByVersion(version);
         this.#baseURL = baseURL;
         this.#version = version;
@@ -69,7 +69,7 @@ class Settings {
      * Delivers the full API URL (string)
      */
     get href() {
-        return this.#URL?.href;
+        return this.#URL.href;
     }
 }
 

@@ -1,8 +1,12 @@
 import axios from 'axios';
 import Settings from '../settings';
 import { Options, Parameters, Paths } from './types';
-import { combineOptions, urlBuilder } from './utils';
+import { combineOptions, isError, urlBuilder } from './utils';
 
+const DEFAULT_ERROR = {
+    status: 400,
+    message: 'Bad Request',
+};
 class Client {
     #defaults!: Options;
     #settings: Settings | undefined;
@@ -12,8 +16,22 @@ class Client {
         this.#settings = settings;
     }
 
-    #client(options: Options) {
-        return axios(combineOptions(options, this.#defaults));
+    async #client(options: Options) {
+        try {
+            const { data } = await axios(
+                combineOptions(options, this.#defaults)
+            );
+            if (isError(data)) {
+                throw {
+                    response: {
+                        data,
+                    },
+                };
+            }
+            return { data };
+        } catch (e: any) {
+            throw e?.response?.data ?? DEFAULT_ERROR;
+        }
     }
 
     async get(paths?: Paths, parameters?: Parameters, options?: Options) {

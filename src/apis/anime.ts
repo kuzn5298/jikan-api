@@ -77,7 +77,7 @@ export const getStaff = (id: number): Promise<ResponseData<AnimeStaff[]>> => {
  */
 export const getEpisodes = (
     id: number,
-    page: number
+    page?: number
 ): Promise<ResponseDataWithShortPagination<AnimeEpisode[]>> => {
     return client.get([Api.ANIME, id, AnimeRequest.EPISODES], { page });
 };
@@ -105,7 +105,7 @@ export const getEpisode = (
  */
 export const getNews = (
     id: number,
-    page: number
+    page?: number
 ): Promise<ResponseDataWithShortPagination<News[]>> => {
     return client.get([Api.ANIME, id, AnimeRequest.NEWS], { page });
 };
@@ -119,7 +119,7 @@ export const getNews = (
  */
 export const getForum = (
     id: number,
-    filter: AnimeForumFilter
+    filter?: AnimeForumFilter
 ): Promise<ResponseData<Forum[]>> => {
     return client.get([Api.ANIME, id, AnimeRequest.FORUM], { filter });
 };
@@ -130,7 +130,7 @@ export const getForum = (
  * @param {number} id - The anime id
  * @see {@link https://docs.api.jikan.moe/#tag/anime/operation/getAnimeVideos}
  */
-export const getVideos = (id: number): Promise<ResponseData<AnimeVideo[]>> => {
+export const getVideos = (id: number): Promise<ResponseData<AnimeVideo>> => {
     return client.get([Api.ANIME, id, AnimeRequest.VIDEOS]);
 };
 
@@ -142,14 +142,13 @@ export const getVideos = (id: number): Promise<ResponseData<AnimeVideo[]>> => {
  * @see {@link https://docs.api.jikan.moe/#tag/anime/operation/getAnimeVideosEpisodes}
  */
 export const getVideoEpisodes = (
-    id: number
+    id: number,
+    page?: number
 ): Promise<ResponseDataWithShortPagination<AnimeVideoEpisodes[]>> => {
-    return client.get([
-        Api.ANIME,
-        id,
-        AnimeRequest.VIDEOS,
-        AnimeRequest.EPISODES,
-    ]);
+    return client.get(
+        [Api.ANIME, id, AnimeRequest.VIDEOS, AnimeRequest.EPISODES],
+        { page }
+    );
 };
 
 /**
@@ -207,7 +206,7 @@ export const getRecommendations = (
  */
 export const getUserUpdates = (
     id: number,
-    page: number
+    page?: number
 ): Promise<ResponseDataWithShortPagination<AnimeUserUpdate[]>> => {
     return client.get([Api.ANIME, id, AnimeRequest.USER_UPDATES], { page });
 };
@@ -221,7 +220,7 @@ export const getUserUpdates = (
  */
 export const getReviews = (
     id: number,
-    page: number
+    page?: number
 ): Promise<ResponseDataWithShortPagination<AnimeReview[]>> => {
     return client.get([Api.ANIME, id, AnimeRequest.REVIEWS], { page });
 };
@@ -244,7 +243,7 @@ export const getRelations = (
  * @param {number} id - The anime id
  * @see {@link https://docs.api.jikan.moe/#tag/anime/operation/getAnimeThemes}
  */
-export const getThemes = (id: number): Promise<ResponseData<AnimeTheme[]>> => {
+export const getThemes = (id: number): Promise<ResponseData<AnimeTheme>> => {
     return client.get([Api.ANIME, id, AnimeRequest.THEMES]);
 };
 
@@ -275,8 +274,8 @@ export const getStreaming = (
 /**
  * Fetch anime by search query and parameters
  *
- * @param {string} - Search query
- * @param {AnimeSearchParameters} parameters - Anime search parameters
+ * @param {string} search - Search query
+ * @param {AnimeSearchParameters} [parameters] - Anime search parameters
  * @see {@link https://docs.api.jikan.moe/#tag/anime/operation/getAnimeSearch}
  */
 export const search = (

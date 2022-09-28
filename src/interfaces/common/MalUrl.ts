@@ -7,7 +7,7 @@ export interface MalNameUrl {
      *
      * @type {number}
      */
-    malId: number;
+    mal_id: number;
     /**
      * Type of resource
      *

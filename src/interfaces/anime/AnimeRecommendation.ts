@@ -9,7 +9,7 @@ export interface AnimeRecommendation {
      *
      * @type {Array<AnimeMeta>}
      */
-    entry: AnimeMeta[];
+    entry: AnimeMeta;
     /**
      * Recommendation URL
      *

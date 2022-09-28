@@ -6,7 +6,7 @@ export interface AnimeMeta {
      *
      * @type {number}
      */
-    malId: number;
+    mal_id: number;
     /**
      * MyAnimeList URL
      *
